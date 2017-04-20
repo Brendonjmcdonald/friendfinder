@@ -13,6 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
+// Could not get the seperate "htmlRoutes.js" to show up so the routes are here as well
 app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "app/public/home.html"));
 });
@@ -20,20 +21,20 @@ app.get("/survey", function(req, res) {
   res.sendFile(path.join(__dirname, "app/public/survey.html"));
 });
 
+// Create an empty array
 var friends = [];
 
+// Used for displaying the array of friends in json format
 app.get("/api/friends", function(req, res){
 
 	return res.json(friends);
-	// for (var i = 0; i < friends.length; i++) {
-      
- //  	return res.json(friends[i]);
-	// };
+	
 });
 
+// Takes the info from the body and pushes it to the friends array
 app.post("/api/friends", function(req, res) {
   var newFriend = req.body;
-  // newTable.routeName = newTable.name.replace(/\s+/g, "").toLowerCase();
+  
 
   console.log(newFriend);
 
